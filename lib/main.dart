@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:qr_app/my_home_page.dart';
+import 'screens/home_page.dart';
+import 'screens/qr_scanner_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'QR Code Attendance',
-      home: MyHomePage(),
+      title: 'QR Attendance',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        scaffoldBackgroundColor: Colors.white,
+        useMaterial3: true,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const HomePage(),
+        '/qr-scanner': (context) => const QrScannerPage(),
+      },
     );
   }
 }
