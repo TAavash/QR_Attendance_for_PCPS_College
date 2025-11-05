@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'screens/home_page.dart';
-import 'screens/qr_scanner_page.dart';
+import 'pages/role_selection_page.dart';
+import 'pages/home_page.dart';
+import 'pages/qr_scanner_page.dart';
+import 'pages/generate_qr_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +23,10 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/': (context) => const HomePage(),
+        '/': (context) => const RoleSelectionPage(),
+        '/student-home': (context) => const HomePage(),
         '/qr-scanner': (context) => const QrScannerPage(),
+        '/teacher-generate': (context) => const GenerateQRPage(),
       },
     );
   }

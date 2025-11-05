@@ -26,8 +26,9 @@ class HomePage extends StatelessWidget {
           SizedBox(width: 12),
         ],
       ),
+
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +50,7 @@ class HomePage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              // Class cards
+              // Example class cards
               const ClassCard(
                 code: "CIS046-3",
                 title: "Software For ...",
@@ -73,20 +74,35 @@ class HomePage extends StatelessWidget {
                 location: "Himalaya, Sagar",
                 color: Colors.blue,
               ),
+              const SizedBox(height: 80), // space for buttons
             ],
           ),
         ),
       ),
 
-      // Floating Action Button
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
-        onPressed: () {
-          Navigator.pushNamed(context, '/qr-scanner');
-        },
-        child: const Icon(Icons.qr_code_scanner, size: 28),
-      ),
+      // Two floating buttons in a row
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          FloatingActionButton.extended(
+            backgroundColor: Colors.redAccent,
+            onPressed: () {
+              Navigator.pushNamed(context, '/qr-scanner');
+            },
+            icon: const Icon(Icons.qr_code_scanner),
+            label: const Text("Scan QR"),
+          ),
+          FloatingActionButton.extended(
+            backgroundColor: Colors.blueAccent,
+            onPressed: () {
+              Navigator.pushNamed(context, '/generate-qr');
+            },
+            icon: const Icon(Icons.qr_code_2),
+            label: const Text("Generate QR"),
+          ),
+        ],
+      ),
     );
   }
 }
